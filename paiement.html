@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paiement - Mode2Me</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/logo.jpg" alt="Logo Mode2Me" />
+    <span style="margin-left: 10px;">Mode<span class="two">2</span>Me</span>
+  </div>
+
+  <button id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+
+  <nav id="main-nav">
+    <a href="index.html">Accueil</a>
+    <a href="panier.html">Panier</a>
+    <a href="paiement.html" class="active">Paiement</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Informations de Paiement</h2>
+  <form action="confirmation.html" method="post" autocomplete="off">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" required placeholder="Votre nom complet" />
+
+    <label for="adresse">Adresse de livraison :</label>
+    <input type="text" id="adresse" name="adresse" required placeholder="Votre adresse de livraison" />
+
+    <label for="carte">Numéro de carte :</label>
+    <input type="text" id="carte" name="carte" required placeholder="Numéro de votre carte" pattern="\d{13,19}" title="Numéro de carte valide entre 13 et 19 chiffres" inputmode="numeric" maxlength="19" />
+
+    <label for="date-expiration">Date d'expiration :</label>
+    <input type="month" id="date-expiration" name="date-expiration" required />
+
+    <label for="cvv">Code de sécurité (CVV) :</label>
+    <input type="text" id="cvv" name="cvv" required placeholder="Code CVV" pattern="\d{3}" title="Le code CVV est un nombre à 3 chiffres" inputmode="numeric" maxlength="3" />
+
+    <button type="submit">Confirmer le paiement</button>
+  </form>
+</main>
+
+<footer>
+  <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

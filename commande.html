@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Commande - Mode2Me</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.jpg" alt="Logo Mode2Me" />
+      <span>Mode<span class="two">2</span>Me</span>
+    </div>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="vetements.html">Vêtements</a>
+      <a href="accessoires.html">Accessoires</a>
+      <a href="sacs.html">Sacs</a>
+      <a href="panier.html">Panier</a>
+    </nav>
+  </header>
+
+  <section class="commande">
+    <h2>Récapitulatif de commande</h2>
+
+    <div class="commande-contenu">
+      <table class="table-commande">
+        <thead>
+          <tr>
+            <th>Produit</th>
+            <th>Quantité</th>
+            <th>Prix</th>
+          </tr>
+        </thead>
+        <tbody id="liste-commande">
+          <tr>
+            <td>Robe élégante d'été</td>
+            <td>1</td>
+            <td>19.99 €</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Total : <span id="total-commande">19.99 €</span></strong></p>
+    </div>
+
+    <div class="formulaire-livraison">
+      <h3>Informations de livraison</h3>
+      <form id="form-commande" action="#">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required />
+
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" name="adresse" required />
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="methode-paiement">Méthode de paiement :</label>
+        <select id="methode-paiement" name="methode-paiement" required>
+          <option value="">-- Choisir --</option>
+          <option value="carte-bancaire">Carte bancaire</option>
+          <option value="paypal">PayPal</option>
+        </select>
+
+        <button type="submit" class="confirmer-commande">Confirmer la commande</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produit - Mode2Me</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.jpg" alt="Logo Mode2Me" style="height: 60px; vertical-align: middle;" />
+      <span style="margin-left: 10px;">Mode<span class="two">2</span>Me</span>
+    </div>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="vetements.html">Vêtements</a>
+      <a href="accessoires.html">Accessoires</a>
+      <a href="sacs.html">Sacs</a>
+      <a href="panier.html">Panier</a>
+    </nav>
+  </header>
+
+  <section class="produit">
+    <h2>Robe élégante d'été</h2>
+    <div class="produit-contenu">
+      <img src="images/robe.jpg" alt="Robe élégante d'été" />
+      <div class="details-produit">
+        <p><strong>Description :</strong> Robe légère idéale pour l'été, avec un design élégant et fluide.</p>
+        <p><strong>Prix :</strong> <span class="prix">19.99 €</span></p>
+        <p><strong>Disponibilité :</strong> En stock</p>
+
+        <label for="taille"><strong>Choisissez votre taille :</strong></label>
+        <select id="taille">
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+
+        <label for="quantite"><strong>Quantité :</strong></label>
+        <input type="number" id="quantite" value="1" min="1" />
+
+        <button class="ajouter-panier" onclick="ajouterAuPanier()">Ajouter au panier</button>
+
+        <p id="confirmation" style="color: green; display: none; margin-top: 10px;">Produit ajouté au panier !</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

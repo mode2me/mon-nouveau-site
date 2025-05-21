@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mode2Me - Contact</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/logo.jpg" alt="Logo Mode2Me" />
+  </div>
+
+  <button id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+
+  <nav id="main-nav">
+    <a href="index.html">Accueil</a>
+    <a href="boutique.html">Boutique</a>
+    <div class="dropdown">
+      <button aria-haspopup="true" aria-expanded="false">Catégories ▾</button>
+      <div class="dropdown-content" aria-label="Sous-menu Catégories">
+        <a href="vetements.html">Vêtements</a>
+        <a href="accessoires.html">Accessoires</a>
+        <a href="sacs.html">Sacs</a>
+        <a href="beaute.html">Beauté</a>
+      </div>
+    </div>
+    <a href="apropos.html">À propos</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="panier.html">Panier</a>
+    <a href="compte.html">Mon Compte</a>
+    <a href="faq.html">FAQ</a>
+    <a href="politique-confidentialite.html">Politique de confidentialité</a>
+    <form action="recherche.html" method="get" class="search-form" role="search">
+      <input type="search" name="q" placeholder="Rechercher..." aria-label="Rechercher un produit" />
+      <button type="submit" aria-label="Rechercher">🔍</button>
+    </form>
+  </nav>
+</header>
+
+<main>
+  <h1>Contactez-nous</h1>
+  <form action="#" method="post" aria-label="Formulaire de contact">
+    <label for="nom">Nom complet</label>
+    <input type="text" id="nom" name="nom" required placeholder="Votre nom complet" />
+
+    <label for="email">Adresse e-mail</label>
+    <input type="email" id="email" name="email" required placeholder="exemple@domaine.com" />
+
+    <label for="message">Votre message</label>
+    <textarea id="message" name="message" required placeholder="Écrivez votre message ici..."></textarea>
+
+    <button type="submit">Envoyer</button>
+  </form>
+</main>
+
+<footer>
+  <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
+  <p>Suivez-nous sur <a href="#">Instagram</a>, <a href="#">Facebook</a></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

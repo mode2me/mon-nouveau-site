@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mode2Me - FAQ</title>
+
+  <!-- Police élégante -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Lien vers le fichier CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/logo.jpg" alt="Logo Mode2Me" />
+  </div>
+
+  <button id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+
+  <nav id="main-nav">
+    <a href="index.html">Accueil</a>
+    <a href="boutique.html">Boutique</a>
+    <div class="dropdown">
+      <button aria-haspopup="true" aria-expanded="false">Catégories ▾</button>
+      <div class="dropdown-content" aria-label="Sous-menu Catégories">
+        <a href="vetements.html">Vêtements</a>
+        <a href="accessoires.html">Accessoires</a>
+        <a href="sacs.html">Sacs</a>
+        <a href="beaute.html">Beauté</a>
+      </div>
+    </div>
+    <a href="apropos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="panier.html">Panier</a>
+    <a href="compte.html">Mon Compte</a>
+    <a href="faq.html" class="active">FAQ</a>
+    <a href="politique-confidentialite.html">Politique de confidentialité</a>
+    <form action="recherche.html" method="get" class="search-form" role="search">
+      <input type="search" name="q" placeholder="Rechercher..." aria-label="Rechercher un produit" />
+      <button type="submit" aria-label="Rechercher">🔍</button>
+    </form>
+  </nav>
+</header>
+
+<main>
+  <h1>Foire aux Questions (FAQ)</h1>
+
+  <section class="faq-item">
+    <div class="faq-question" tabindex="0">Comment passer une commande sur Mode2Me ?</div>
+    <div class="faq-answer">
+      Pour passer une commande, naviguez sur notre boutique, ajoutez vos articles au panier, puis suivez les étapes de paiement en ligne sécurisées.
+    </div>
+  </section>
+
+  <section class="faq-item">
+    <div class="faq-question" tabindex="0">Quels sont les modes de paiement acceptés ?</div>
+    <div class="faq-answer">
+      Nous acceptons les paiements par carte bancaire (Visa, Mastercard), PayPal, et certains paiements locaux selon votre pays.
+    </div>
+  </section>
+
+  <section class="faq-item">
+    <div class="faq-question" tabindex="0">Comment suivre ma commande ?</div>
+    <div class="faq-answer">
+      Après expédition, vous recevrez un email avec un numéro de suivi pour suivre votre colis en temps réel.
+    </div>
+  </section>
+
+  <section class="faq-item">
+    <div class="faq-question" tabindex="0">Puis-je retourner un article ?</div>
+    <div class="faq-answer">
+      Oui, vous avez 14 jours après réception pour retourner un article non porté et non utilisé, selon notre politique de retour.
+    </div>
+  </section>
+
+  <section class="faq-item">
+    <div class="faq-question" tabindex="0">Comment contacter le service client ?</div>
+    <div class="faq-answer">
+      Vous pouvez nous contacter via la page <a href="contact.html">Contact</a> ou par email à support@mode2me.com.
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
+  <p>Suivez-nous sur <a href="#">Instagram</a>, <a href="#">Facebook</a></p>
+</footer>
+
+<!-- Lien vers le fichier JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>

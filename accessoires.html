@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mode2Me - Accessoires</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/logo.jpg" alt="Logo Mode2Me" />
+  </div>
+
+  <button id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+
+  <nav id="main-nav">
+    <a href="index.html">Accueil</a>
+    <a href="boutique.html">Boutique</a>
+    <div class="dropdown">
+      <button aria-haspopup="true" aria-expanded="false">Catégories ▾</button>
+      <div class="dropdown-content" aria-label="Sous-menu Catégories">
+        <a href="vetements.html">Vêtements</a>
+        <a href="accessoires.html" class="active">Accessoires</a>
+        <a href="sacs.html">Sacs</a>
+        <a href="beaute.html">Beauté</a>
+      </div>
+    </div>
+    <a href="apropos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="panier.html">Panier</a>
+    <a href="compte.html">Mon Compte</a>
+    <a href="faq.html">FAQ</a>
+    <a href="politique-confidentialite.html">Politique de confidentialité</a>
+    <form action="recherche.html" method="get" class="search-form" role="search">
+      <input type="search" name="q" placeholder="Rechercher..." aria-label="Rechercher un produit" />
+      <button type="submit" aria-label="Rechercher">🔍</button>
+    </form>
+  </nav>
+</header>
+
+<main>
+  <h1>Accessoires Mode2Me</h1>
+
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="images/accessoire1.jpg" alt="Écharpe élégante" />
+      <div class="product-name">Écharpe élégante</div>
+      <div class="product-price">29,99 €</div>
+      <a href="#" class="btn-add">Ajouter au panier</a>
+    </div>
+
+    <div class="product-card">
+      <img src="images/accessoire2.jpg" alt="Chapeau tendance" />
+      <div class="product-name">Chapeau tendance</div>
+      <div class="product-price">34,99 €</div>
+      <a href="#" class="btn-add">Ajouter au panier</a>
+    </div>
+
+    <div class="product-card">
+      <img src="images/accessoire3.jpg" alt="Lunettes de soleil" />
+      <div class="product-name">Lunettes de soleil</div>
+      <div class="product-price">49,99 €</div>
+      <a href="#" class="btn-add">Ajouter au panier</a>
+    </div>
+
+    <div class="product-card">
+      <img src="images/accessoire4.jpg" alt="Montre chic" />
+      <div class="product-name">Montre chic</div>
+      <div class="product-price">89,99 €</div>
+      <a href="#" class="btn-add">Ajouter au panier</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
+  <p>Suivez-nous sur <a href="#">Instagram</a>, <a href="#">Facebook</a></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

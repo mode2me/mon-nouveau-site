@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mon Compte - Mode2Me</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.jpg" alt="Logo Mode2Me" />
+      <span>Mode<span class="two">2</span>Me</span>
+    </div>
+
+    <form action="recherche.html" method="get" class="search-form" role="search">
+      <input type="search" name="q" placeholder="Rechercher..." aria-label="Rechercher un produit" />
+      <button type="submit" aria-label="Rechercher">
+        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16a6.471 6.471 0 004.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C8.01 14 6 11.99 6 9.5S8.01 5 10.5 5 15 7.01 15 9.5 12.99 14 10.5 14z"/>
+        </svg>
+      </button>
+    </form>
+
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="boutique.html">Boutique</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="panier.html">Panier</a>
+      <a href="compte.html" class="active">Mon Compte</a>
+      <a href="faq.html">FAQ</a>
+      <a href="politique-confidentialite.html">Politique de confidentialité</a>
+    </nav>
+  </header>
+
+  <section class="compte">
+    <h2>Mon Compte</h2>
+    <p>Bienvenue, <span id="user-name">Mohamed</span>. Voici vos informations de compte :</p>
+
+    <h3>Informations personnelles</h3>
+    <p>Nom : <span id="user-fullname">Mohamed Manawi</span></p>
+    <p>Email : <span id="user-email">mohamed@example.com</span></p>
+    <p>Téléphone : <span id="user-phone">+33 6 12 34 56 78</span></p>
+
+    <button onclick="showEditForm()">Modifier mes informations</button>
+
+    <div id="edit-form">
+      <h3>Modifier vos informations</h3>
+      <form id="form-infos" onsubmit="return saveInfos(event)">
+        <label for="fullname">Nom complet</label>
+        <input type="text" id="fullname" name="fullname" value="Mohamed Manawi" required />
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="mohamed@example.com" required />
+        
+        <label for="phone">Téléphone</label>
+        <input type="tel" id="phone" name="phone" value="+33 6 12 34 56 78" required />
+        
+        <button type="submit">Enregistrer</button>
+        <button type="button" onclick="hideEditForm()">Annuler</button>
+      </form>
+    </div>
+
+    <h3>Historique des commandes</h3>
+    <ul>
+      <li>Commande #001 - 20/05/2025 - 50 €</li>
+      <li>Commande #002 - 15/05/2025 - 30 €</li>
+    </ul>
+
+    <button onclick="deconnexion()">Déconnexion</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>
