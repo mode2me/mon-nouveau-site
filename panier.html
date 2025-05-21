@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mode2Me - Panier</title>
+
+  <!-- Police élégante -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Lien vers le CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/logo.jpg" alt="Logo Mode2Me" />
+  </div>
+
+  <button id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+
+  <nav id="main-nav">
+    <a href="index.html">Accueil</a>
+    <a href="boutique.html">Boutique</a>
+    <div class="dropdown">
+      <button aria-haspopup="true" aria-expanded="false">Catégories ▾</button>
+      <div class="dropdown-content">
+        <a href="vetements.html">Vêtements</a>
+        <a href="accessoires.html">Accessoires</a>
+        <a href="sacs.html">Sacs</a>
+        <a href="beaute.html">Beauté</a>
+      </div>
+    </div>
+    <a href="apropos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="panier.html" class="active">Panier</a>
+    <a href="compte.html">Mon Compte</a>
+    <a href="faq.html">FAQ</a>
+    <a href="politique-confidentialite.html">Politique de confidentialité</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Votre Panier</h1>
+  <div id="cart-items"></div>
+  <div class="total" id="cart-total">Total : 0 €</div>
+  <button class="checkout-btn">Valider la commande</button>
+</main>
+
+<footer>
+  <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
+</footer>
+
+<!-- Script JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
