@@ -5,6 +5,15 @@ const mainNav = document.getElementById('main-nav');
 if (menuToggle && mainNav) {
   menuToggle.addEventListener('click', () => {
     mainNav.classList.toggle('show');
+    menuToggle.setAttribute('aria-expanded', mainNav.classList.contains('show'));
+  });
+
+  // Fermer le menu si on clique en dehors
+  document.addEventListener('click', (e) => {
+    if (!mainNav.contains(e.target) && e.target !== menuToggle) {
+      mainNav.classList.remove('show');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
   });
 }
 
@@ -17,33 +26,33 @@ if (dropdown) {
   if (dropdownButton) {
     dropdownButton.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isOpen = dropdown.classList.contains('open');
-      dropdown.classList.toggle('open', !isOpen);
-      dropdownButton.setAttribute('aria-expanded', !isOpen);
+      dropdown.classList.toggle('open');
+      dropdownButton.setAttribute('aria-expanded', dropdown.classList.contains('open'));
     });
 
+    // Fermer le dropdown si on clique en dehors
     document.addEventListener('click', () => {
-      dropdown.classList.remove('open');
-      dropdownButton.setAttribute('aria-expanded', 'false');
+      if (dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+        dropdownButton.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 }
 
-// === FORMULAIRE COMMANDE OU PAIEMENT ===
+// === FORMULAIRE COMMANDE ===
 const form = document.querySelector('form');
 
 if (form && form.action.includes('confirmation.html')) {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-
     const nom = this.querySelector('[name="nom"]');
-    if (nom) {
-      alert(`Merci pour votre commande, ${nom.value} !`);
-    } else {
-      alert('Merci pour votre commande !');
-    }
-
+    alert(`Merci pour votre commande${nom?.value ? `, ${nom.value}` : ''} !`);
     this.reset();
-    window.location.href = this.action; // Redirige vers confirmation.html
+
+    // Redirection vers la page de confirmation après un court délai (facultatif)
+    setTimeout(() => {
+      window.location.href = this.action;
+    }, 500);
   });
 }
