@@ -1,3 +1,13 @@
+/* === VARIABLES === */
+:root {
+  --color-primary: #3498db;
+  --color-dark: #2c3e50;
+  --color-light: #f8f9fa;
+  --color-hover: #d6eaf8;
+  --color-hover-light: #e8f4fc;
+}
+
+/* === RESET === */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,10 +17,14 @@
 body {
   font-family: 'Playfair Display', serif;
   background-color: #fff;
-  color: #2c3e50;
+  color: var(--color-dark);
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+/* === HEADER === */
 header {
   position: fixed;
   top: 0;
@@ -22,7 +36,7 @@ header {
   align-items: center;
   padding: 12px 20px;
   z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .logo img {
@@ -30,15 +44,17 @@ header {
   display: block;
 }
 
+/* === MENU BURGER === */
 #menu-toggle {
   display: none;
   font-size: 28px;
   background: none;
   border: none;
-  color: #2c3e50;
+  color: var(--color-dark);
   cursor: pointer;
 }
 
+/* === NAVIGATION === */
 nav {
   display: flex;
   align-items: center;
@@ -49,19 +65,20 @@ nav {
 nav a,
 .dropdown > button {
   text-decoration: none;
-  color: #2c3e50;
+  color: var(--color-dark);
   padding: 8px 12px;
   font-weight: 600;
   border-radius: 4px;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 nav a:hover,
 nav a.active,
 .dropdown > button:hover {
-  background-color: #d6eaf8;
+  background-color: var(--color-hover);
 }
 
+/* === DROPDOWN === */
 .dropdown {
   position: relative;
 }
@@ -74,7 +91,7 @@ nav a.active,
   top: 100%;
   left: 0;
   min-width: 180px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   z-index: 1000;
 }
@@ -85,14 +102,16 @@ nav a.active,
 
 .dropdown-content a {
   padding: 10px 15px;
-  color: #2c3e50;
+  color: var(--color-dark);
   text-decoration: none;
+  transition: background 0.3s;
 }
 
 .dropdown-content a:hover {
-  background-color: #e8f4fc;
+  background-color: var(--color-hover-light);
 }
 
+/* === SEARCH FORM === */
 .search-form {
   display: flex;
   align-items: center;
@@ -101,20 +120,21 @@ nav a.active,
 
 .search-form input {
   padding: 6px 10px;
-  border: 1px solid #5dade2;
+  border: 1px solid var(--color-primary);
   border-radius: 4px 0 0 4px;
   font-family: inherit;
 }
 
 .search-form button {
   padding: 6px 10px;
-  background-color: #3498db;
+  background-color: var(--color-primary);
   color: #fff;
   border: none;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
 }
 
+/* === MAIN === */
 main {
   padding-top: 100px;
   padding-left: 20px;
@@ -122,6 +142,7 @@ main {
   max-width: 1000px;
   margin: auto;
   text-align: center;
+  flex: 1;
 }
 
 main h1 {
@@ -137,19 +158,21 @@ main p {
   margin-right: auto;
 }
 
+/* === FOOTER === */
 footer {
   margin-top: 40px;
   text-align: center;
-  background-color: #f8f9fa;
+  background-color: var(--color-light);
   padding: 20px;
   font-size: 0.95rem;
 }
 
 footer a {
   text-decoration: underline;
-  color: #2c3e50;
+  color: var(--color-dark);
 }
 
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
   #menu-toggle {
     display: block;
@@ -162,14 +185,14 @@ footer a {
     right: 0;
     flex-direction: column;
     background-color: #fff;
-    overflow: hidden;
+    overflow-y: auto;
     max-height: 0;
     transition: max-height 0.3s ease-in-out;
   }
 
   nav.show {
-    max-height: 600px;
-    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    max-height: 80vh;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   }
 
   nav a,
@@ -191,4 +214,34 @@ footer a {
     box-shadow: none;
     background-color: #f0f8ff;
   }
+}
+
+/* === ACCESSIBILITÉ === */
+a:focus,
+button:focus,
+input:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+/* Notification style */
+.notif {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #000;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  opacity: 0.9;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Animation douce de chargement */
+body {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+body.loaded {
+  opacity: 1;
 }
