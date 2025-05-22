@@ -1,10 +1,7 @@
-// ======= CODE JS REFACTORE =======
-
-// Attendre que le DOM soit chargé
 document.addEventListener('DOMContentLoaded', () => {
   // --- MENU BURGER ---
   const menuToggle = document.getElementById('menu-toggle');
-  const nav = document.querySelector('nav#main-nav');
+  const nav = document.querySelector('nav#main-nav'); // Assure-toi que ton nav a bien cet ID
 
   if (menuToggle && nav) {
     menuToggle.addEventListener('click', () => {
@@ -31,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const button = drop.querySelector('button');
     if (!button) return;
 
-    // Clic sur le bouton dropdown
     button.addEventListener('click', (e) => {
       const isOpen = drop.classList.toggle('open');
       button.setAttribute('aria-expanded', String(isOpen));
@@ -39,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
     });
 
-    // Gestion clavier (Escape pour fermer)
     button.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         button.setAttribute('aria-expanded', 'false');
@@ -159,11 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- LIEN ACTIF DANS LE MENU ---
   const links = document.querySelectorAll("#main-nav a");
   links.forEach(link => {
-    if (window.location.href.includes(link.getAttribute("href"))) {
+    if (window.location.pathname === link.getAttribute("href")) {
       link.classList.add("active");
     }
   });
 
   // --- ANIMATION CHARGEMENT DOUCE ---
   document.body.classList.add("loaded");
+  document.body.style.opacity = "1"; // Si tu veux une apparition progressive
 });
