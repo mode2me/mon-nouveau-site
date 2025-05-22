@@ -8,19 +8,37 @@
 </head>
 <body>
 
-  <header>
-    <div class="logo">
-      <img src="images/logo.jpg" alt="Logo Mode2Me" />
-      <span>Mode<span class="two">2</span>Me</span>
+ <header>
+  <div class="logo">
+    <img src="imageslogo.jpg" alt="Logo Mode2Me" />
+  </div>
+
+  <button id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+
+  <nav id="main-nav">
+    <a href="index.html" class="active">Accueil</a>
+    <a href="boutique.html">Boutique</a>
+    <div class="dropdown">
+      <button aria-haspopup="true" aria-expanded="false">Catégories ▾</button>
+      <div class="dropdown-content" aria-label="Sous-menu Catégories">
+        <a href="vetements.html">Vêtements</a>
+        <a href="accessoires.html">Accessoires</a>
+        <a href="sacs.html">Sacs</a>
+        <a href="beaute.html">Beauté</a>
+      </div>
     </div>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="vetements.html">Vêtements</a>
-      <a href="accessoires.html">Accessoires</a>
-      <a href="sacs.html">Sacs</a>
-      <a href="panier.html">Panier</a>
-    </nav>
-  </header>
+    <a href="apropos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="panier.html">Panier</a>
+    <a href="compte.html">Mon Compte</a>
+    <a href="faq.html">FAQ</a>
+    <a href="politique-confidentialite.html">Politique de confidentialité</a>
+    <form action="recherche.html" method="get" class="search-form" role="search">
+      <input type="search" name="q" placeholder="Rechercher..." aria-label="Rechercher un produit" />
+      <button type="submit" aria-label="Rechercher">🔍</button>
+    </form>
+  </nav>
+</header>
 
   <section class="commande">
     <h2>Récapitulatif de commande</h2>

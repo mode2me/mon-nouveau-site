@@ -2,13 +2,17 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Produit - Mode2Me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recherche - Mode2Me</title>
+
+  <!-- Police élégante -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
+<header>
   <div class="logo">
     <img src="imageslogo.jpg" alt="Logo Mode2Me" />
   </div>
@@ -40,37 +44,24 @@
   </nav>
 </header>
 
-  <section class="produit">
-    <h2>Robe élégante d'été</h2>
-    <div class="produit-contenu">
-      <img src="images/robe.jpg" alt="Robe élégante d'été" />
-      <div class="details-produit">
-        <p><strong>Description :</strong> Robe légère idéale pour l'été, avec un design élégant et fluide.</p>
-        <p><strong>Prix :</strong> <span class="prix">19.99 €</span></p>
-        <p><strong>Disponibilité :</strong> En stock</p>
+<main class="recherche">
+  <h2>Recherche de Produits</h2>
+  <form action="recherche.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher un produit..." />
+    <button type="submit">Rechercher</button>
+  </form>
 
-        <label for="taille"><strong>Choisissez votre taille :</strong></label>
-        <select id="taille">
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-        </select>
+  <div class="resultats">
+    <p id="no-results" style="display: none;">Aucun produit trouvé pour votre recherche.</p>
+  </div>
+</main>
 
-        <label for="quantite"><strong>Quantité :</strong></label>
-        <input type="number" id="quantite" value="1" min="1" />
+<footer>
+  <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
+  <p>Suivez-nous sur <a href="#">Instagram</a>, <a href="#">Facebook</a></p>
+</footer>
 
-        <button class="ajouter-panier" onclick="ajouterAuPanier()">Ajouter au panier</button>
+<script src="script.js"></script>
 
-        <p id="confirmation" style="color: green; display: none; margin-top: 10px;">Produit ajouté au panier !</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>

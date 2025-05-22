@@ -15,17 +15,17 @@
 
 <header>
   <div class="logo">
-    <img src="images/logo.jpg" alt="Logo Mode2Me" />
+    <img src="imageslogo.jpg" alt="Logo Mode2Me" />
   </div>
 
   <button id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
 
   <nav id="main-nav">
-    <a href="index.html">Accueil</a>
+    <a href="index.html" class="active">Accueil</a>
     <a href="boutique.html">Boutique</a>
     <div class="dropdown">
       <button aria-haspopup="true" aria-expanded="false">Catégories ▾</button>
-      <div class="dropdown-content">
+      <div class="dropdown-content" aria-label="Sous-menu Catégories">
         <a href="vetements.html">Vêtements</a>
         <a href="accessoires.html">Accessoires</a>
         <a href="sacs.html">Sacs</a>
@@ -34,10 +34,14 @@
     </div>
     <a href="apropos.html">À propos</a>
     <a href="contact.html">Contact</a>
-    <a href="panier.html" class="active">Panier</a>
+    <a href="panier.html">Panier</a>
     <a href="compte.html">Mon Compte</a>
     <a href="faq.html">FAQ</a>
     <a href="politique-confidentialite.html">Politique de confidentialité</a>
+    <form action="recherche.html" method="get" class="search-form" role="search">
+      <input type="search" name="q" placeholder="Rechercher..." aria-label="Rechercher un produit" />
+      <button type="submit" aria-label="Rechercher">🔍</button>
+    </form>
   </nav>
 </header>
 
