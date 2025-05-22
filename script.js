@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- MENU BURGER ---
   const menuToggle = document.getElementById('menu-toggle');
-  const nav = document.querySelector('nav#main-nav'); // Assure-toi que ton nav a bien cet ID
+  const nav = document.getElementById('main-nav'); // Le nav doit avoir id="main-nav"
 
   if (menuToggle && nav) {
     menuToggle.addEventListener('click', () => {
@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const query = searchInput.value.trim();
       if (query !== '') {
-        // Correction : mettre l'URL entre guillemets et utiliser backticks
         window.location.href = `recherche.html?q=${encodeURIComponent(query)}`;
       }
     });
@@ -102,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
       panier.push(produit);
     }
     setPanier(panier);
-    // Correction : message entre backticks
     showNotification(`${produit.nom} ajouté au panier !`);
   }
 
@@ -140,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
     panier.forEach(item => {
       const itemTotal = item.prix * item.quantite;
       total += itemTotal;
-      // Correction : mettre le contenu entre quotes ou backticks
       html += `<li>${item.nom} x${item.quantite} — ${itemTotal.toFixed(2)} €</li>`;
     });
     html += `</ul><p>Total : <strong>${total.toFixed(2)} €</strong></p>`;
@@ -164,14 +161,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- ANIMATION CHARGEMENT DOUCE ---
   document.body.classList.add("loaded");
-  document.body.style.opacity = "1"; // Si tu veux une apparition progressive
+  document.body.style.opacity = "1"; // apparition progressive
 });
+Remarques importantes :
+Le nav doit avoir un ID main-nav dans ton HTML :
 
-document.addEventListener("DOMContentLoaded", function() {
-  const menuToggle = document.getElementById("menu-toggle");
-  const mainNav = document.getElementById("main-nav");
-
-  menuToggle.addEventListener("click", function() {
-    mainNav.classList.toggle("show");
-  });
-});
+html
+Copier
+Modifier
+<nav id="main-nav">
+  <!-- tes liens -->
+</nav>
