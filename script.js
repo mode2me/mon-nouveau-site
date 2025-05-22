@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- MENU BURGER ---
   const menuToggle = document.getElementById('menu-toggle');
-  const nav = document.querySelector('nav#main-nav'); // Assure-toi que ton nav a bien cet ID
+  const nav = document.querySelector('nav#main-nav');
 
   if (menuToggle && nav) {
     menuToggle.addEventListener('click', () => {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- DROPDOWNS (tous) ---
+  // --- DROPDOWNS ---
   const dropdowns = document.querySelectorAll('.dropdown');
 
   function closeOtherDropdowns(currentDropdown) {
@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Fermer les dropdowns si clic en dehors
   document.addEventListener('click', () => {
     dropdowns.forEach(drop => {
       const btn = drop.querySelector('button');
@@ -67,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- NOTIFICATION VISUELLE ---
+  // --- NOTIFICATION ---
   function showNotification(message) {
     let notif = document.querySelector('.notif');
     if (!notif) {
@@ -82,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2500);
   }
 
-  // --- PANIER AVEC LOCALSTORAGE ---
+  // --- PANIER ---
   function getPanier() {
     const panier = localStorage.getItem('panier');
     return panier ? JSON.parse(panier) : [];
@@ -104,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
     showNotification(`${produit.nom} ajouté au panier !`);
   }
 
-  // --- BOUTONS COMMANDER ---
   const commanderButtons = document.querySelectorAll('.btn-commander');
   commanderButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -118,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- AFFICHAGE PANIER SUR LA PAGE panier.html ---
   if (window.location.pathname.includes('panier.html')) {
     afficherPanier();
   }
@@ -151,15 +148,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- LIEN ACTIF DANS LE MENU ---
+  // --- LIEN ACTIF ---
   const links = document.querySelectorAll("#main-nav a");
   links.forEach(link => {
-    if (window.location.pathname === link.getAttribute("href")) {
+    if (window.location.pathname.endsWith(link.getAttribute("href"))) {
       link.classList.add("active");
     }
   });
 
-  // --- ANIMATION CHARGEMENT DOUCE ---
+  // --- ANIMATION LOADING ---
   document.body.classList.add("loaded");
-  document.body.style.opacity = "1"; // Si tu veux une apparition progressive
+  document.body.style.opacity = "1";
 });
