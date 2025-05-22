@@ -18,10 +18,10 @@
     <img src="imageslogo.jpg" alt="Logo Mode2Me" />
   </div>
 
-  <button id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+  <button id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">&#9776;</button>
 
-  <nav id="main-nav">
-    <a href="index.html" class="active">Accueil</a>
+  <nav id="main-nav" role="navigation" aria-label="Menu principal">
+    <a href="index.html" class="active" aria-current="page">Accueil</a>
     <a href="boutique.html">Boutique</a>
     <div class="dropdown">
       <button aria-haspopup="true" aria-expanded="false">Catégories ▾</button>
@@ -59,7 +59,7 @@
 
 <footer>
   <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
-  <p>Suivez-nous sur <a href="#">Instagram</a>, <a href="#">Facebook</a></p>
+  <p>Suivez-nous sur <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>, <a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></p>
 </footer>
 
 <!-- Script externe -->

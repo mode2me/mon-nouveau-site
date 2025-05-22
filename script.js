@@ -145,3 +145,95 @@ function afficherPanier() {
     afficherPanier();
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Animation entrée page
+  document.body.classList.add('loaded');
+
+  // Menu burger
+  const menuToggle = document.getElementById('menu-toggle');
+  const nav = document.querySelector('nav#main-nav');
+
+  menuToggle.addEventListener('click', () => {
+    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', !isExpanded);
+    nav.classList.toggle('show');
+  });
+
+  // Dropdown accessible clavier et souris
+  const dropdown = document.querySelector('.dropdown');
+  const dropdownBtn = dropdown.querySelector('button');
+  const dropdownContent = dropdown.querySelector('.dropdown-content');
+
+  dropdownBtn.addEventListener('click', () => {
+    const expanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+    dropdownBtn.setAttribute('aria-expanded', !expanded);
+    dropdown.classList.toggle('open');
+  });
+
+  dropdownBtn.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      dropdownBtn.setAttribute('aria-expanded', 'false');
+      dropdown.classList.remove('open');
+      dropdownBtn.focus();
+    }
+  });
+
+  // Fermer dropdown si clic en dehors
+  document.addEventListener('click', e => {
+    if (!dropdown.contains(e.target)) {
+      dropdownBtn.setAttribute('aria-expanded', 'false');
+      dropdown.classList.remove('open');
+    }
+  });
+
+  // Gestion panier simple localStorage (exemple pour lien panier)
+  // On stocke un tableau d'objets {id, nom, qte, prix}
+  function getPanier() {
+    const panier = localStorage.getItem('panier');
+    return panier ? JSON.parse(panier) : [];
+  }
+
+  function setPanier(panier) {
+    localStorage.setItem('panier', JSON.stringify(panier));
+  }
+
+  // Exemple ajout notification
+  function showNotification(msg) {
+    let notif = document.querySelector('.notif');
+    if (!notif) {
+      notif = document.createElement('div');
+      notif.className = 'notif';
+      document.body.appendChild(notif);
+    }
+    notif.textContent = msg;
+    notif.classList.add('show');
+    setTimeout(() => {
+      notif.classList.remove('show');
+    }, 2500);
+  }
+
+  // Simuler ajout produit dans panier (juste pour test)
+  // Ici tu peux remplacer par ta logique d'ajout réelle sur ta boutique.
+  /*
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const produit = {
+        id: btn.dataset.id,
+        nom: btn.dataset.nom,
+        qte: 1,
+        prix: parseFloat(btn.dataset.prix)
+      };
+      let panier = getPanier();
+      const index = panier.findIndex(p => p.id === produit.id);
+      if (index > -1) {
+        panier[index].qte += 1;
+      } else {
+        panier.push(produit);
+      }
+      setPanier(panier);
+      showNotification(`${produit.nom} ajouté au panier`);
+    });
+  });
+  */
+});
