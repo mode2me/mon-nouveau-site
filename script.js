@@ -80,3 +80,68 @@ document.addEventListener("DOMContentLoaded", () => {
   // Animation de chargement douce
   document.body.classList.add("loaded");
 });
+
+// ========== PANIER AVEC LOCALSTORAGE ==========
+
+// Fonction pour ajouter un produit au panier
+function ajouterAuPanier(produit) {
+  let panier = JSON.parse(localStorage.getItem('panier')) || [];
+
+  const index = panier.findIndex(p => p.id === produit.id);
+
+  if (index !== -1) {
+    panier[index].quantite += 1;
+  } else {
+    panier.push(produit);
+  }
+
+  localStorage.setItem('panier', JSON.stringify(panier));
+  showNotification(`${produit.nom} ajouté au panier !`);
+}
+
+// Exemple d’usage avec un bouton (tu peux adapter avec tes vrais produits)
+commanderButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const produit = {
+      id: button.dataset.id || `id-${Math.random().toString(36).substr(2, 9)}`,
+      nom: button.dataset.nom || "Produit inconnu",
+      prix: parseFloat(button.dataset.prix) || 0,
+      quantite: 1
+    };
+    ajouterAuPanier(produit);
+  });
+});
+
+// Affichage sur la page panier
+if (window.location.pathname.includes('panier.html')) {
+  afficherPanier();
+}
+
+function afficherPanier() {
+  const panier = JSON.parse(localStorage.getItem('panier')) || [];
+  const conteneur = document.getElementById('contenu-panier');
+
+  if (!conteneur) return;
+
+  if (panier.length === 0) {
+    conteneur.innerHTML = "<p>Votre panier est vide.</p>";
+    return;
+  }
+
+  let total = 0;
+  let html = '<ul class="liste-panier">';
+  panier.forEach(item => {
+    const itemTotal = item.prix * item.quantite;
+    total += itemTotal;
+    html += `<li>${item.nom} x${item.quantite} — ${itemTotal.toFixed(2)} €</li>`;
+  });
+  html += `</ul><p>Total : <strong>${total.toFixed(2)} €</strong></p>`;
+  html += `<button id="vider-panier">Vider le panier</button>`;
+
+  conteneur.innerHTML = html;
+
+  document.getElementById('vider-panier')?.addEventListener('click', () => {
+    localStorage.removeItem('panier');
+    afficherPanier();
+  });
+}
