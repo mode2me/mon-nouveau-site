@@ -166,3 +166,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add("loaded");
   document.body.style.opacity = "1"; // Si tu veux une apparition progressive
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const menuToggle = document.getElementById("menu-toggle");
+  const mainNav = document.getElementById("main-nav");
+
+  menuToggle.addEventListener("click", function() {
+    mainNav.classList.toggle("show");
+  });
+});
