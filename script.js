@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const query = searchInput.value.trim();
       if (query !== '') {
-        window.location.href = recherche.html?q=${encodeURIComponent(query)};
+        // Correction : mettre l'URL entre guillemets et utiliser backticks
+        window.location.href = `recherche.html?q=${encodeURIComponent(query)}`;
       }
     });
   }
@@ -101,7 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
       panier.push(produit);
     }
     setPanier(panier);
-    showNotification(${produit.nom} ajouté au panier !);
+    // Correction : message entre backticks
+    showNotification(`${produit.nom} ajouté au panier !`);
   }
 
   // --- BOUTONS COMMANDER ---
@@ -109,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   commanderButtons.forEach(button => {
     button.addEventListener('click', () => {
       const produit = {
-        id: button.dataset.id || id-${Math.random().toString(36).substr(2, 9)},
+        id: button.dataset.id || `id-${Math.random().toString(36).substr(2, 9)}`,
         nom: button.dataset.nom || 'Produit inconnu',
         prix: parseFloat(button.dataset.prix) || 0,
         quantite: 1
@@ -138,10 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
     panier.forEach(item => {
       const itemTotal = item.prix * item.quantite;
       total += itemTotal;
-      html += <li>${item.nom} x${item.quantite} — ${itemTotal.toFixed(2)} €</li>;
+      // Correction : mettre le contenu entre quotes ou backticks
+      html += `<li>${item.nom} x${item.quantite} — ${itemTotal.toFixed(2)} €</li>`;
     });
-    html += </ul><p>Total : <strong>${total.toFixed(2)} €</strong></p>;
-    html += <button id="vider-panier">Vider le panier</button>;
+    html += `</ul><p>Total : <strong>${total.toFixed(2)} €</strong></p>`;
+    html += `<button id="vider-panier">Vider le panier</button>`;
 
     conteneur.innerHTML = html;
 
