@@ -1,4 +1,4 @@
-:root {
+ {
   --color-primary: #3498db;
   --color-dark: #2c3e50;
   --color-light: #f8f9fa;
@@ -190,38 +190,4 @@ main {
 
 .notif.show {
   opacity: 1;
-}
-
-/* === FORMULAIRE PAIEMENT - chaque entrée sur une ligne distincte === */
-form label {
-  display: block;
-  margin-top: 15px;
-  font-weight: 600;
-}
-
-form input {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-form button[type="submit"] {
-  margin-top: 25px;
-  padding: 12px 25px;
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-form button[type="submit"]:hover {
-  background-color: #2980b9;
 }
