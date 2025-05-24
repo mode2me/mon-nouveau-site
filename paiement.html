@@ -7,6 +7,46 @@
 
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Mise en forme des champs du formulaire sur lignes séparées */
+    form label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+      color: var(--color-dark);
+    }
+    form input, form select, form textarea, form button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-family: 'Playfair Display', serif;
+      transition: border-color 0.3s ease;
+    }
+    form input:focus, form select:focus, form textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      background-color: var(--color-hover-light);
+    }
+    form button[type="submit"] {
+      background-color: var(--color-primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+    form button[type="submit"]:hover {
+      background-color: #2980b9;
+    }
+  </style>
 </head>
 <body>
 
