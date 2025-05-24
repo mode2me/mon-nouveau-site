@@ -68,6 +68,16 @@
   <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
 </footer>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const panier = JSON.parse(localStorage.getItem('panier') || '[]');
+    if (panier.length === 0) {
+      alert('Votre panier est vide. Veuillez ajouter des articles avant de payer.');
+      window.location.href = 'panier.html';
+    }
+  });
+</script>
+
 <script src="script.js"></script>
 
 </body>
