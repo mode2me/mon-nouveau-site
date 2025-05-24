@@ -179,6 +179,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // --- BOUTON VALIDER LA COMMANDE ---
+  const checkoutBtn = document.querySelector('.checkout-btn');
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+      const panier = getPanier();
+      if (panier.length === 0) {
+        alert("Votre panier est vide. Ajoutez des articles avant de passer à la commande.");
+        return;
+      }
+      // Redirection vers la page de paiement
+      window.location.href = 'paiement.html';
+    });
+  }
+
   // --- ANIMATION DOUCE AU CHARGEMENT ---
   document.body.classList.add("loaded");
   document.body.style.opacity = "1";
