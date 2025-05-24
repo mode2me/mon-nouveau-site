@@ -113,14 +113,22 @@ document.addEventListener('DOMContentLoaded', () => {
     showNotification(`${produit.nom} ajouté au panier !`);
   }
 
-  // --- BOUTONS COMMANDER (si présents) ---
-  const commanderButtons = document.querySelectorAll('.btn-commander');
-  commanderButtons.forEach(button => {
-    button.addEventListener('click', () => {
+  // --- BOUTONS AJOUTER AU PANIER ---
+  const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const productCard = e.target.closest('.product-card');
+      if (!productCard) return;
+
+      const nom = productCard.querySelector('.product-title')?.textContent.trim() || 'Produit inconnu';
+      const prixText = productCard.querySelector('.product-price')?.textContent.trim() || '0';
+      const prix = parseFloat(prixText.replace(',', '.').replace(/[^\d.]/g, '')) || 0;
+      const id = nom.toLowerCase().replace(/\s+/g, '-');
+
       const produit = {
-        id: button.dataset.id || `id-${Math.random().toString(36).substr(2, 9)}`,
-        nom: button.dataset.nom || 'Produit inconnu',
-        prix: parseFloat(button.dataset.prix) || 0,
+        id,
+        nom,
+        prix,
         quantite: 1
       };
       ajouterAuPanier(produit);
