@@ -149,9 +149,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let total = 0;
     let html = '<ul class="liste-panier">';
     panier.forEach(item => {
-      const itemTotal = item.prix * item.quantite;
+      // S'assure que prix et quantite sont bien des nombres
+      const prix = Number(item.prix) || 0;
+      const quantite = Number(item.quantite) || 0;
+      const itemTotal = prix * quantite;
       total += itemTotal;
-      html += `<li>${item.nom} x${item.quantite} — ${itemTotal.toFixed(2)} €</li>`;
+      html += `<li>${item.nom} x${quantite} — ${itemTotal.toFixed(2)} €</li>`;
     });
     html += `</ul><p>Total : <strong>${total.toFixed(2)} €</strong></p>`;
     html += `<button id="vider-panier">Vider le panier</button>`;
