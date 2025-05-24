@@ -149,9 +149,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let total = 0;
     let html = '<ul class="liste-panier">';
     panier.forEach(item => {
-      // S'assure que prix et quantite sont bien des nombres
-      const prix = Number(item.prix) || 0;
-      const quantite = Number(item.quantite) || 0;
+      // Conversion forcée en nombre pour prix et quantité
+      const prix = parseFloat(item.prix) || 0;
+      const quantite = parseInt(item.quantite, 10) || 0;
       const itemTotal = prix * quantite;
       total += itemTotal;
       html += `<li>${item.nom} x${quantite} — ${itemTotal.toFixed(2)} €</li>`;
