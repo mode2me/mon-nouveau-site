@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- MENU BURGER ---
   const menuToggle = document.getElementById('menu-toggle');
-  const nav = document.getElementById('main-nav'); // Le nav doit avoir id="main-nav"
+  const nav = document.getElementById('main-nav');
 
   if (menuToggle && nav) {
     menuToggle.addEventListener('click', () => {
@@ -11,12 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- DROPDOWNS (tous) ---
+  // --- DROPDOWNS ---
   const dropdowns = document.querySelectorAll('.dropdown');
 
-  function closeOtherDropdowns(currentDropdown) {
+  function closeOtherDropdowns(current) {
     dropdowns.forEach(drop => {
-      if (drop !== currentDropdown) {
+      if (drop !== current) {
         const btn = drop.querySelector('button');
         if (btn) btn.setAttribute('aria-expanded', 'false');
         drop.classList.remove('open');
@@ -25,21 +25,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   dropdowns.forEach(drop => {
-    const button = drop.querySelector('button');
-    if (!button) return;
+    const btn = drop.querySelector('button');
+    if (!btn) return;
 
-    button.addEventListener('click', (e) => {
+    btn.addEventListener('click', (e) => {
       const isOpen = drop.classList.toggle('open');
-      button.setAttribute('aria-expanded', String(isOpen));
+      btn.setAttribute('aria-expanded', String(isOpen));
       closeOtherDropdowns(drop);
       e.stopPropagation();
     });
 
-    button.addEventListener('keydown', e => {
+    btn.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
-        button.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-expanded', 'false');
         drop.classList.remove('open');
-        button.focus();
+        btn.focus();
       }
     });
   });
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- FORMULAIRE RECHERCHE ---
+  // --- FORMULAIRE DE RECHERCHE ---
   const searchForm = document.querySelector('.search-form');
   const searchInput = searchForm?.querySelector('input');
 
@@ -61,13 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
     searchForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const query = searchInput.value.trim();
-      if (query !== '') {
+      if (query) {
         window.location.href = `recherche.html?q=${encodeURIComponent(query)}`;
       }
     });
   }
 
-  // --- NOTIFICATION VISUELLE ---
+  // --- NOTIFICATION ---
   function showNotification(message) {
     let notif = document.querySelector('.notif');
     if (!notif) {
@@ -82,14 +82,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2500);
   }
 
-  // --- PANIER AVEC LOCALSTORAGE ---
+  // --- PANIER LOCALSTORAGE ---
   function getPanier() {
-    const panier = localStorage.getItem('panier');
-    return panier ? JSON.parse(panier) : [];
+    try {
+      const panier = localStorage.getItem('panier');
+      return panier ? JSON.parse(panier) : [];
+    } catch (e) {
+      console.error('Erreur lecture panier :', e);
+      return [];
+    }
   }
 
   function setPanier(panier) {
-    localStorage.setItem('panier', JSON.stringify(panier));
+    try {
+      localStorage.setItem('panier', JSON.stringify(panier));
+    } catch (e) {
+      console.error('Erreur écriture panier :', e);
+    }
   }
 
   function ajouterAuPanier(produit) {
@@ -104,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showNotification(`${produit.nom} ajouté au panier !`);
   }
 
-  // --- BOUTONS COMMANDER ---
+  // --- BOUTONS COMMANDER (si présents) ---
   const commanderButtons = document.querySelectorAll('.btn-commander');
   commanderButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -118,16 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- AFFICHAGE PANIER SUR LA PAGE panier.html ---
-  if (window.location.pathname.includes('panier.html')) {
-    afficherPanier();
-  }
-
+  // --- AFFICHAGE DU PANIER ---
   function afficherPanier() {
-    const panier = getPanier();
     const conteneur = document.getElementById('contenu-panier');
     if (!conteneur) return;
 
+    const panier = getPanier();
     if (panier.length === 0) {
       conteneur.innerHTML = "<p>Votre panier est vide.</p>";
       return;
@@ -142,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     html += `</ul><p>Total : <strong>${total.toFixed(2)} €</strong></p>`;
     html += `<button id="vider-panier">Vider le panier</button>`;
-
     conteneur.innerHTML = html;
 
     document.getElementById('vider-panier')?.addEventListener('click', () => {
@@ -151,24 +155,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- LIEN ACTIF DANS LE MENU ---
+  // Appel automatique de affichage panier si page panier.html
+  if (window.location.pathname.includes('panier.html')) {
+    afficherPanier();
+  }
+
+  // --- LIEN ACTIF MENU ---
   const links = document.querySelectorAll("#main-nav a");
   links.forEach(link => {
-    if (window.location.pathname === link.getAttribute("href")) {
+    if (window.location.pathname.endsWith(link.getAttribute("href"))) {
       link.classList.add("active");
     }
   });
 
-  // --- ANIMATION CHARGEMENT DOUCE ---
+  // --- ANIMATION DOUCE AU CHARGEMENT ---
   document.body.classList.add("loaded");
-  document.body.style.opacity = "1"; // apparition progressive
+  document.body.style.opacity = "1";
 });
-Remarques importantes :
-Le nav doit avoir un ID main-nav dans ton HTML :
-
-html
-Copier
-Modifier
-<nav id="main-nav">
-  <!-- tes liens -->
-</nav>
