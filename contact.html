@@ -6,6 +6,18 @@
   <title>Mode2Me - Contact</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    .confirmation-message {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,7 +55,8 @@
 
 <main>
   <h1>Contactez-nous</h1>
-  <form action="https://usebasin.com/f/3fffffcdf2bc" method="POST" aria-label="Formulaire de contact">
+
+  <form id="contact-form" action="https://usebasin.com/f/3fffffcdf2bc" method="POST" aria-label="Formulaire de contact">
     <label for="nom">Nom complet</label>
     <input type="text" id="nom" name="nom" required placeholder="Votre nom complet" />
 
@@ -55,6 +68,10 @@
 
     <button type="submit">Envoyer</button>
   </form>
+
+  <div class="confirmation-message" id="confirmation-message">
+    ✅ Merci ! Votre message a bien été envoyé.
+  </div>
 </main>
 
 <footer>
@@ -62,6 +79,34 @@
   <p>Suivez-nous sur <a href="#">Instagram</a>, <a href="#">Facebook</a></p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  const form = document.getElementById('contact-form');
+  const confirmation = document.getElementById('confirmation-message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Empêche le rechargement
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        form.reset();
+        confirmation.style.display = 'block';
+      } else {
+        alert("Une erreur s'est produite. Veuillez réessayer.");
+      }
+    })
+    .catch(error => {
+      alert("Erreur réseau. Vérifiez votre connexion.");
+    });
+  });
+</script>
+
 </body>
 </html>
