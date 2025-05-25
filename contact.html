@@ -16,6 +16,22 @@
       border: 1px solid #c3e6cb;
       border-radius: 5px;
       font-weight: bold;
+      text-align: center;
+    }
+    #btn-retour {
+      margin-top: 12px;
+      padding: 10px 18px;
+      background-color: #155724;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      transition: background-color 0.3s ease;
+    }
+    #btn-retour:hover {
+      background-color: #0b3b12;
     }
   </style>
 </head>
@@ -70,7 +86,8 @@
   </form>
 
   <div class="confirmation-message" id="confirmation-message">
-    ✅ Merci ! Votre message a bien été envoyé.
+    ✅ Merci ! Votre message a bien été envoyé.<br />
+    <button id="btn-retour" type="button">Retour à l'accueil</button>
   </div>
 </main>
 
@@ -82,6 +99,7 @@
 <script>
   const form = document.getElementById('contact-form');
   const confirmation = document.getElementById('confirmation-message');
+  const btnRetour = document.getElementById('btn-retour');
 
   form.addEventListener('submit', function(e) {
     e.preventDefault(); // Empêche le rechargement
@@ -105,6 +123,10 @@
     .catch(error => {
       alert("Erreur réseau. Vérifiez votre connexion.");
     });
+  });
+
+  btnRetour.addEventListener('click', () => {
+    window.location.href = 'index.html'; // chemin vers ta page d'accueil
   });
 </script>
 
