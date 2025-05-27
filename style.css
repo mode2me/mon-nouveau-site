@@ -197,7 +197,7 @@ main {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #fff;
+  background-color: var(--color-light);
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
@@ -226,22 +226,22 @@ label {
 input,
 textarea {
   padding: 0.8rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-dark);
   border-radius: 8px;
   font-family: 'Playfair Display', serif;
 }
 
 input:focus,
 textarea:focus {
-  border-color: #e91e63;
+  border-color: var(--color-primary);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
 .btn-envoyer {
   margin-top: 2rem;
   padding: 1rem 2rem;
-  background-color: #e91e63;
+  background-color: var(--color-primary);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -251,7 +251,7 @@ textarea:focus {
 }
 
 .btn-envoyer:hover {
-  background-color: #c2185b;
+  background-color: #2980b9;
 }
 
 /* Responsive */
