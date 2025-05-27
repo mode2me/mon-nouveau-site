@@ -10,12 +10,112 @@
 
   <!-- Feuille de style externe -->
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      font-family: 'Playfair Display', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header, footer {
+      background-color: #222;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 2em;
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      background-color: white;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .contact-form label {
+      grid-column: span 2;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      grid-column: span 2;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+    }
+
+    .btn-envoyer {
+      grid-column: span 2;
+      padding: 12px;
+      background-color: #222;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    .btn-envoyer:hover {
+      background-color: #444;
+    }
+
+    @media (max-width: 600px) {
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+      .contact-form label,
+      .contact-form input,
+      .contact-form textarea,
+      .btn-envoyer {
+        grid-column: span 1;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
   <div class="logo">
-    <img src="imageslogo.jpg" alt="Logo Mode2Me" />
+    <img src="imageslogo.jpg" alt="Logo Mode2Me" style="height: 60px;" />
   </div>
 
   <button id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">&#9776;</button>
@@ -47,7 +147,7 @@
 
 <main>
   <h1>Contactez-nous</h1>
-  <p>Vous avez une question, un souci ou simplement un message à nous transmettre ? Remplissez ce formulaire, nous vous répondrons dans les plus brefs délais.</p>
+  <p>Une question ? Un message ? Nous sommes là pour vous répondre.</p>
 
   <form action="envoyer-contact.php" method="post" class="contact-form">
     <label for="nom">Nom *</label>
@@ -68,10 +168,12 @@
 
 <footer>
   <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
-  <p>Suivez-nous sur <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>, <a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+  <p>Suivez-nous sur 
+    <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>, 
+    <a href="#" target="_blank" rel="noopener noreferrer">Facebook</a>
+  </p>
 </footer>
 
-<!-- Script externe -->
 <script src="script.js"></script>
 </body>
 </html>
