@@ -4,48 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mode2Me - Contact</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Police élégante -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    .confirmation-message {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-      border-radius: 5px;
-      font-weight: bold;
-      text-align: center;
-    }
-    #btn-retour {
-      margin-top: 12px;
-      padding: 10px 18px;
-      background-color: #155724;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
-      font-family: 'Playfair Display', serif;
-      transition: background-color 0.3s ease;
-    }
-    #btn-retour:hover {
-      background-color: #0b3b12;
-    }
-  </style>
+
+  <!-- Feuille de style externe -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
   <div class="logo">
-    <img src="https://github.com/mode2me/mon-nouveau-site/blob/main/imageslogo.jpg" alt="Logo Mode2Me" />
+    <img src="imageslogo.jpg" alt="Logo Mode2Me" />
   </div>
 
-  <button id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+  <button id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">&#9776;</button>
 
-  <nav id="main-nav">
-    <a href="index.html" class="active">Accueil</a>
+  <nav id="main-nav" role="navigation" aria-label="Menu principal">
+    <a href="index.html">Accueil</a>
     <a href="boutique.html">Boutique</a>
     <div class="dropdown">
       <button aria-haspopup="true" aria-expanded="false">Catégories ▾</button>
@@ -57,7 +33,7 @@
       </div>
     </div>
     <a href="apropos.html">À propos</a>
-    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="active" aria-current="page">Contact</a>
     <a href="panier.html">Panier</a>
     <a href="compte.html">Mon Compte</a>
     <a href="faq.html">FAQ</a>
@@ -71,64 +47,31 @@
 
 <main>
   <h1>Contactez-nous</h1>
+  <p>Vous avez une question, un souci ou simplement un message à nous transmettre ? Remplissez ce formulaire, nous vous répondrons dans les plus brefs délais.</p>
 
-  <form id="contact-form" action="https://usebasin.com/f/3fffffcdf2bc" method="POST" aria-label="Formulaire de contact">
-    <label for="nom">Nom complet</label>
+  <form action="envoyer-contact.php" method="post" class="contact-form">
+    <label for="nom">Nom *</label>
     <input type="text" id="nom" name="nom" required placeholder="Votre nom complet" />
 
-    <label for="email">Adresse e-mail</label>
-    <input type="email" id="email" name="email" required placeholder="exemple@domaine.com" />
+    <label for="email">Adresse e-mail *</label>
+    <input type="email" id="email" name="email" required placeholder="votre@email.com" />
 
-    <label for="message">Votre message</label>
-    <textarea id="message" name="message" required placeholder="Écrivez votre message ici..."></textarea>
+    <label for="sujet">Sujet *</label>
+    <input type="text" id="sujet" name="sujet" required placeholder="Sujet de votre message" />
 
-    <button type="submit">Envoyer</button>
+    <label for="message">Message *</label>
+    <textarea id="message" name="message" rows="6" required placeholder="Écrivez votre message ici..."></textarea>
+
+    <button type="submit" class="btn-envoyer">Envoyer</button>
   </form>
-
-  <div class="confirmation-message" id="confirmation-message">
-    ✅ Merci ! Votre message a bien été envoyé.<br />
-    <button id="btn-retour" type="button">Retour à l'accueil</button>
-  </div>
 </main>
 
 <footer>
   <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
-  <p>Suivez-nous sur <a href="#">Instagram</a>, <a href="#">Facebook</a></p>
+  <p>Suivez-nous sur <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>, <a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></p>
 </footer>
 
-<script>
-  const form = document.getElementById('contact-form');
-  const confirmation = document.getElementById('confirmation-message');
-  const btnRetour = document.getElementById('btn-retour');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault(); // Empêche le rechargement
-    const formData = new FormData(form);
-
-    fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        form.reset();
-        confirmation.style.display = 'block';
-      } else {
-        alert("Une erreur s'est produite. Veuillez réessayer.");
-      }
-    })
-    .catch(error => {
-      alert("Erreur réseau. Vérifiez votre connexion.");
-    });
-  });
-
-  btnRetour.addEventListener('click', () => {
-    window.location.href = 'index.html'; // chemin vers ta page d'accueil
-  });
-</script>
-
+<!-- Script externe -->
+<script src="script.js"></script>
 </body>
 </html>
