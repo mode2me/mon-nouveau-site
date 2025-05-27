@@ -55,58 +55,66 @@
     }
 
     .contact-form {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      background-color: white;
-      padding: 2em;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
     }
 
     .contact-form label {
-      grid-column: span 2;
-      margin-bottom: 5px;
+      margin-bottom: 0.5rem;
       font-weight: 600;
     }
 
     .contact-form input,
     .contact-form textarea {
-      grid-column: span 2;
-      padding: 10px;
+      padding: 0.8rem;
       border: 1px solid #ccc;
-      border-radius: 5px;
-      font-family: inherit;
+      border-radius: 8px;
+      font-family: 'Playfair Display', serif;
     }
 
-    .contact-form textarea {
-      resize: vertical;
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #e91e63;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
     }
 
     .btn-envoyer {
-      grid-column: span 2;
-      padding: 12px;
-      background-color: #222;
-      color: white;
+      grid-column: 1 / -1;
+      margin-top: 1rem;
+      padding: 1rem 2rem;
+      background-color: #e91e63;
+      color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
+      font-weight: bold;
       cursor: pointer;
-      font-size: 1em;
+      transition: background-color 0.3s ease;
     }
 
     .btn-envoyer:hover {
-      background-color: #444;
+      background-color: #c2185b;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       .contact-form {
         grid-template-columns: 1fr;
-      }
-      .contact-form label,
-      .contact-form input,
-      .contact-form textarea,
-      .btn-envoyer {
-        grid-column: span 1;
       }
     }
   </style>
@@ -150,17 +158,25 @@
   <p>Une question ? Un message ? Nous sommes là pour vous répondre.</p>
 
   <form action="envoyer-contact.php" method="post" class="contact-form">
-    <label for="nom">Nom *</label>
-    <input type="text" id="nom" name="nom" required placeholder="Votre nom complet" />
+    <div class="form-group">
+      <label for="nom">Nom *</label>
+      <input type="text" id="nom" name="nom" required placeholder="Votre nom complet" />
+    </div>
 
-    <label for="email">Adresse e-mail *</label>
-    <input type="email" id="email" name="email" required placeholder="votre@email.com" />
+    <div class="form-group">
+      <label for="email">Adresse e-mail *</label>
+      <input type="email" id="email" name="email" required placeholder="votre@email.com" />
+    </div>
 
-    <label for="sujet">Sujet *</label>
-    <input type="text" id="sujet" name="sujet" required placeholder="Sujet de votre message" />
+    <div class="form-group full-width">
+      <label for="sujet">Sujet *</label>
+      <input type="text" id="sujet" name="sujet" required placeholder="Sujet de votre message" />
+    </div>
 
-    <label for="message">Message *</label>
-    <textarea id="message" name="message" rows="6" required placeholder="Écrivez votre message ici..."></textarea>
+    <div class="form-group full-width">
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" rows="6" required placeholder="Écrivez votre message ici..."></textarea>
+    </div>
 
     <button type="submit" class="btn-envoyer">Envoyer</button>
   </form>
