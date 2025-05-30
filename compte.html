@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mon Compte - Mode2Me</title>
-<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
+<header>
   <div class="logo">
     <img src="imageslogo.jpg" alt="Logo Mode2Me" />
   </div>
@@ -40,46 +40,49 @@
   </nav>
 </header>
 
-  <section class="compte">
-    <h2>Mon Compte</h2>
-    <p>Bienvenue, <span id="user-name">Mohamed</span>. Voici vos informations de compte :</p>
+<section class="compte">
+  <h2>Mon Compte</h2>
+  <p>Bienvenue, <span id="user-name">Mohamed</span>. Voici vos informations de compte :</p>
 
-    <h3>Informations personnelles</h3>
-    <p>Nom : <span id="user-fullname">Mohamed Manawi</span></p>
-    <p>Email : <span id="user-email">mohamed@example.com</span></p>
-    <p>Téléphone : <span id="user-phone">+33 6 12 34 56 78</span></p>
+  <h3>Informations personnelles</h3>
+  <p>Nom : <span id="user-fullname">Mohamed Manawi</span></p>
+  <p>Email : <span id="user-email">mohamed@example.com</span></p>
+  <p>Téléphone : <span id="user-phone">+33 6 12 34 56 78</span></p>
 
-    <button onclick="showEditForm()">Modifier mes informations</button>
+  <button onclick="showEditForm()">Modifier mes informations</button>
 
-    <div id="edit-form">
-      <h3>Modifier vos informations</h3>
-      <form id="form-infos" onsubmit="return saveInfos(event)">
-        <label for="fullname">Nom complet</label>
-        <input type="text" id="fullname" name="fullname" value="Mohamed Manawi" required />
-        
-       <p> <label for="email">Email</label>
-        <input type="email" id="email" name="email" value="mohamed@example.com" required /></p>
-        
-        <label for="phone">Téléphone</label>
-        <input type="tel" id="phone" name="phone" value="+33 6 12 34 56 78" required />
-        
-        <p><button type="submit">Enregistrer</button></p>
-        <p><button type="button" onclick="hideEditForm()">Annuler</button></p>
-      </form>
-    </div>
+  <div id="edit-form" style="display:none;">
+    <h3>Modifier vos informations</h3>
+    <form id="form-infos" onsubmit="return saveInfos(event)">
+      <label for="fullname">Nom complet</label>
+      <input type="text" id="fullname" name="fullname" value="Mohamed Manawi" required />
 
-    <h3>Historique des commandes</h3>
-    <ul>
-      <li>Commande #001 - 20/05/2025 - 50 €</li>
-      <li>Commande #002 - 15/05/2025 - 30 €</li>
-    </ul>
+      <p>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="mohamed@example.com" required />
+      </p>
 
-    <button onclick="deconnexion()">Déconnexion</button>
-  </section>
+      <label for="phone">Téléphone</label>
+      <input type="tel" id="phone" name="phone" value="+33 6 12 34 56 78" required />
 
-  <footer>
-    <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
-  </footer>
+      <p><button type="submit">Enregistrer</button></p>
+      <p><button type="button" onclick="hideEditForm()">Annuler</button></p>
+    </form>
+  </div>
+
+  <h3>Historique des commandes</h3>
+  <ul>
+    <li>Commande #001 - 20/05/2025 - 50 €</li>
+    <li>Commande #002 - 15/05/2025 - 30 €</li>
+  </ul>
+
+  <button onclick="deconnexion()">Déconnexion</button>
+</section>
+
+<footer>
+  <p>&copy; 2025 Mode2Me. Tous droits réservés.</p>
+</footer>
+
 <script src="script.js"></script>
 </body>
 </html>

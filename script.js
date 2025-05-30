@@ -149,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let total = 0;
     let html = '<ul class="liste-panier">';
     panier.forEach(item => {
-      // Conversion forcée en nombre pour prix et quantité
       const prix = parseFloat(item.prix) || 0;
       const quantite = parseInt(item.quantite, 10) || 0;
       const itemTotal = prix * quantite;
@@ -166,7 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Appel automatique de affichage panier si page panier.html
   if (window.location.pathname.includes('panier.html')) {
     afficherPanier();
   }
@@ -188,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alert("Votre panier est vide. Ajoutez des articles avant de passer à la commande.");
         return;
       }
-      // Redirection vers la page de paiement
       window.location.href = 'paiement.html';
     });
   }
@@ -196,4 +193,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- ANIMATION DOUCE AU CHARGEMENT ---
   document.body.classList.add("loaded");
   document.body.style.opacity = "1";
+
+  // --- FORMULAIRE PROFIL : AFFICHER / MASQUER ---
+  window.showEditForm = function () {
+    const form = document.getElementById("edit-form");
+    if (form) {
+      form.style.display = "block";
+    }
+  }
+
+  window.hideEditForm = function () {
+    const form = document.getElementById("edit-form");
+    if (form) {
+      form.style.display = "none";
+    }
+  }
 });
